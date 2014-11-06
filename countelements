@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+use strict;
+
+use XML::Parser;
+
+# you can use - to mean STDIN
+my $file = shift;
+my %elements;
+
+my $parser = XML::Parser->new(
+    Handlers => {
+        Start => sub { $elements{$_[1]}++ },
+    },
+);
+$parser->parsefile($file);
+
+print "Element,Count\n";
+printf "%s,%s\n", $_, $elements{$_} foreach sort keys %elements

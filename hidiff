@@ -3,8 +3,8 @@
 if [ -t 1 ]; then
     # send STDERR to /dev/null so pygmentize doesn't complain if we don't get to
     # the end of its input
-    diff $* | pygmentize -l diff 2> /dev/null | less -FXR
+    diff "$@" | pygmentize -l diff -O encoding=UTF-8 2> /dev/null | less -FXR
 else
     # when STDOUT isn't a terminal (i.e., we are part of a pipe), just be diff
-    exec diff $*
+    exec diff "$@"
 fi

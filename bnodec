@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TURTLE=$1
+#TODO: accept other RDF file types
+
+rapper -q -o ntriples -i turtle "$TURTLE" \
+    | awk '{ print $1 }' \
+    | grep "^_" \
+    | sort \
+    | uniq \
+    | wc -l

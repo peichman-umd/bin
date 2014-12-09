@@ -1,6 +1,13 @@
 Utility Scripts
 ===============
 
+## bnodec
+
+Counts the number of blank nodes in an RDF file. Accepts Turtle as input, and
+uses rapper to convert it to N-Triples.
+
+    $ bnodec rdf_data.ttl
+
 ## callgraph
 
 Uses gprof2dot.py and dot to create a PNG callgraph image from a cachegrind file.

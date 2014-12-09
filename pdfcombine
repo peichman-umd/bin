@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# usage: pdfcombine file1.pdf file2.pdf ... > output.pdf
+
+gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=%stdout% -q "$@"

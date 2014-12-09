@@ -21,6 +21,13 @@ viewing. All command line arguments are passed directly to diff.
 If it detects its output is not a terminal, it instead becomes plain diff. This
 makes it safe to use in pipes. (This idea stolen from less.)
 
+## pdfcombine
+
+Combine multiple PDF files into one using ghostscript. The output PDF is sent to
+STDOUT.
+
+    $ pdfcombine first.pdf second.pdf third.pdf > output.pdf
+
 ## sendkey
 
     $ sendkey < ~/id_rsa.pub server1 server2 server3

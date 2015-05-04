@@ -4,6 +4,6 @@
 
 # send the public key (on STDIN) to one or more servers
 # assumes that your login directory on the remote server is your $HOME
-for server in $*; do
+for server in "$@"; do
     ssh "$server" "mkdir -p .ssh && cat >> .ssh/authorized_keys"
 done

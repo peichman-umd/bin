@@ -1,0 +1,23 @@
+#!/bin/bash
+
+URL=$1
+# default jq filter is to pass through everything
+FILTER=${2:-.}
+EDITOR=${EDITOR:-vim}
+TMPDIR=$(mktemp -d /tmp/$(basename $0).XXXXXX) || exit 1
+FILENAME=tmp.json
+TMPFILE=$TMPDIR/tmp.json
+
+curl -s "$URL" | jq "$FILTER" > "$TMPFILE"
+eval "$EDITOR" "$TMPFILE"
+
+if [ ! -s "$TMPFILE" ]; then
+    echo "JSON file empty, aborting update."
+    rm -rf "$TMPDIR"
+    exit 1
+fi
+
+curl -s -X PUT -H "Content-Type: application/json" --data-binary @"$TMPFILE" "$URL" \
+    | jq .
+
+rm -rf "$TMPDIR"

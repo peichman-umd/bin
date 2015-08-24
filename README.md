@@ -20,6 +20,27 @@ Count the number of occurances of all XML elements in a file. Outputs a 2-column
 CSV of the element name and count. Use "-" as the filename to read from STDIN
 instead.
 
+## editjson
+
+    $ editjson http://example.com/api/path/to/resource.json
+
+Downloads a JSON file, opens it in an editor of your choice, and then reuploads
+the JSON using an HTTP PUT request back to the original URL.
+
+When downloading, it runs the JSON through [jq](https://stedolan.github.io/jq/)
+with a default filter of `.`. The filter can be specified as the second
+argument. For example, to remove the `badkey` key from the JSON before opening
+the editor, you could use:
+
+    $ editjson http://example.com/api/path/to/resource.json 'del(.badkey)'
+
+The editor to use is taken from the `$EDITOR` environment variable. It defaults
+to `vim` if there is no `$EDITOR` set.
+
+The PUT request is only sent if the eidted file is non-empty. Therefore, to
+cancel the PUT request, delete all of the contents of the file before saving and
+quitting your editor.
+
 ## hidiff
 
 Pass a diff through a syntax highlighter (pygmentize) and pager (less) for easy

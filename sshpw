@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# force ssh to require password auth
+exec ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no "$@"

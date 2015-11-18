@@ -62,3 +62,10 @@ STDOUT.
 
 Copy the SSH public key on STDIN to the `~/authorized_keys` file on one or more
 servers.
+
+## sshpw
+
+    $ sshpw user@server
+
+Force `ssh` to prompt for a password, and disables public-key authentication.
+Any arguments are simply passed through to `ssh`.

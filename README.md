@@ -26,6 +26,16 @@ instead.
 
 Uses: Perl, XML::Parser
 
+## curlpw
+
+    $ curlpw http://example.com/protected
+
+This is a wrapper around `curl` that interactively prompts for a username and
+password, then executres `curl` with those credentials. Any command-line
+arguments are passed on to the `curl` command as-is.
+
+Uses: curl
+
 ## editjson
 
     $ editjson http://example.com/api/path/to/resource.json

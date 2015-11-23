@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# prompt for a username/password combination,
+# then pass those credentials on to curl
+
+# inspired by https://stackoverflow.com/questions/9778670/curl-to-prompt-a-user-name-and-password#comment12448817_9779051
+
+read -p "Username: " USERNAME
+read -s -p "Password: " PASSWORD
+
+exec curl -u "$USERNAME:$PASSWORD" "$@"

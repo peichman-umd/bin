@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# Usage: sendkey < pub_key server1 server2 [...]
+# Usage: sendkey pub_key_file server1 server2 [...]
 
-# send the public key (on STDIN) to one or more servers
+PUB_KEY_FILE=$1
+shift
+
+# send the public key in pubkey_file to one or more servers
 # assumes that your login directory on the remote server is your $HOME
 for server in "$@"; do
-    ssh "$server" "mkdir -p .ssh && cat >> .ssh/authorized_keys"
+    <"$PUB_KEY_FILE" ssh "$server" "mkdir -p .ssh && cat >> .ssh/authorized_keys"
 done

@@ -80,10 +80,10 @@ Uses: gs
 
 ## sendkey
 
-    $ sendkey < ~/id_rsa.pub server1 server2 server3
+    $ sendkey ~/id_rsa.pub server1 server2 server3
 
-Copy the SSH public key on STDIN to the `~/authorized_keys` file on one or more
-servers.
+Copy the SSH public key in the file given as the first argument to the
+`~/authorized_keys` file on one or more servers.
 
 Uses: ssh
 

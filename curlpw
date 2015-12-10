@@ -7,5 +7,6 @@
 
 read -p "Username: " USERNAME
 read -s -p "Password: " PASSWORD
+echo
 
 exec curl -u "$USERNAME:$PASSWORD" "$@"

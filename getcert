@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Source: <http://serverfault.com/a/192731>
+
+HOST=$1
+PORTNUMBER=${2:-443}
+
+echo -n \
+    | openssl s_client -connect "$HOST:$PORTNUMBER" \
+    | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'

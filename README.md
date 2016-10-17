@@ -59,6 +59,17 @@ quitting your editor.
 
 Uses: curl, jq
 
+## getcert
+
+Retrive the SSL certificate from a server, given a hostname and optional port. If
+no port is given, it defaults to 443 (HTTPS). It prints the PEM-encoded certificate
+to STDOUT.
+
+    $ getcert www.lib.umd.edu > www.pem
+    $ getcert ldap.umd.edu 636 > ldap.pem
+
+Uses: openssl, sed
+
 ## hidiff
 
 Pass a diff through a syntax highlighter (pygmentize) and pager (less) for easy

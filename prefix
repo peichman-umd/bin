@@ -1,0 +1,14 @@
+#!/bin/bash
+
+format=ttl
+
+while [ "$#" != 0 ]; do
+    if grep -q '^-' <<<"$1"; then
+        format=$(sed -e 's/^-*//' <<<"$1")
+    else
+        prefix=$1
+        url="http://prefix.cc/${prefix}.file.${format}"
+        curl -sf "$url"
+    fi
+    shift
+done
